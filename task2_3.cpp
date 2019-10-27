@@ -21,15 +21,13 @@
 #include <iostream>
 #include <vector>
 
-// #define DEBUG
-
 class MinHeap {
 public:
     void push(int element);
 
     int pop();
 
-    int get_min();
+    int get_min() const;
 
     void print_buffer(const std::string &message) {
         std::cout << message << ": ";
@@ -39,7 +37,7 @@ public:
         std::cout << std::endl;
     }
 
-    int size() {
+    int size() const {
         return arr.size();
     }
 
@@ -128,16 +126,10 @@ void MinHeap::sift_down(int position) {
 
 void MinHeap::push(int element) {
     arr.push_back(element);
-#ifdef DEBUG
-    print_buffer("push before sift up");
-#endif
     sift_up(arr.size() - 1);
-#ifdef DEBUG
-    print_buffer("push after sift up");
-#endif
 }
 
-int MinHeap::get_min() {
+int MinHeap::get_min() const {
     int min = arr.empty() ? -1 : arr.at(0);
     return min;
 }
@@ -146,32 +138,25 @@ int MinHeap::pop() {
     int min_value = arr.at(0);
     arr.at(0) = arr.at(arr.size() - 1);
     arr.pop_back();
-#ifdef DEBUG
-    print_buffer("pop before sift down");
-#endif
     sift_down(0);
-#ifdef DEBUG
-    print_buffer("pop after sift down");
-#endif
     return min_value;
 }
 
 int main() {
-    auto *heap = new MinHeap();
-    int max_amount_of_trains = 0;
-    int arrival_time;
-    int departure_time;
+    MinHeap heap{};
     int n;
+    int max_amount_of_trains = 0;
     std::cin >> n;
     for (int i = 0; i < n; ++i) {
+        int arrival_time;
+        int departure_time;
         std::cin >> arrival_time;
         std::cin >> departure_time;
-        while (heap->get_min() < arrival_time && !heap->empty()) {
-            heap->pop();
+        while (!heap.empty() && heap.get_min() < arrival_time ) {
+            heap.pop();
         }
-        heap->push(departure_time);
-        max_amount_of_trains = heap->size() > max_amount_of_trains ?
-                               heap->size() : max_amount_of_trains;
+        heap.push(departure_time);
+        max_amount_of_trains = std::max(heap.size(), max_amount_of_trains);
     }
     std::cout << max_amount_of_trains << std::endl;
     return 0;
