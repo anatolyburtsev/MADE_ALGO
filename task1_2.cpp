@@ -8,10 +8,7 @@
 // Обрабатывать команды push * и pop *.
 
 
-// #define DEBUG_1
-
 class Deque {
-    ~Deque() { delete[] buffer; }
 
 public:
     void push_front(int new_element);
@@ -29,6 +26,8 @@ public:
         head_position = 0;
         tail_position = 0;
     }
+
+    ~Deque() { delete[] buffer; }
 
     // function for debug purpose. Print some useful information
     // about inner state
@@ -66,9 +65,6 @@ private:
 
 void Deque::grow() {
     int new_buffer_size = buffer_size * grow_coefficient;
-#ifdef DEBUG_1
-    print_buffer("before grow");
-#endif
     int *new_buffer = new int[new_buffer_size];
 
     if (head_position < tail_position) {
@@ -84,11 +80,9 @@ void Deque::grow() {
     }
     head_position = 0;
     tail_position = number_of_elements - 1;
+    delete[] buffer;
     buffer = new_buffer;
     buffer_size = new_buffer_size;
-#ifdef DEBUG_1
-    print_buffer("after grow");
-#endif
 }
 
 void Deque::push_front(int new_element) {
@@ -107,9 +101,6 @@ void Deque::push_front(int new_element) {
     buffer[new_head_position] = new_element;
     head_position = new_head_position;
     number_of_elements += 1;
-#ifdef DEBUG_1
-    print_buffer("end push front");
-#endif
 }
 
 void Deque::push_back(int new_element) {
@@ -128,9 +119,6 @@ void Deque::push_back(int new_element) {
     buffer[new_tail_position] = new_element;
     tail_position = new_tail_position;
     number_of_elements += 1;
-#ifdef DEBUG_1
-    print_buffer("end push back");
-#endif
 }
 
 int Deque::pop_front() {
@@ -146,9 +134,6 @@ int Deque::pop_front() {
     } else {
         head_position = 0;
     }
-#ifdef DEBUG_1
-    print_buffer("end pop front");
-#endif
     return result;
 }
 
@@ -165,15 +150,12 @@ int Deque::pop_back() {
     } else {
         tail_position = buffer_size - 1;
     }
-#ifdef DEBUG_1
-    print_buffer("end pop back");
-#endif
     return result;
 }
 
 
 int main() {
-    auto *dequeue = new Deque();
+    Deque dequeue;
     int n = 0;
     std::cin >> n;
     int operation = 0;
@@ -187,22 +169,22 @@ int main() {
 
         switch (operation) {
             case (1) : {
-                dequeue->push_front(number);
+                dequeue.push_front(number);
                 break;
             }
             case (2) : {
-                int value = dequeue->pop_front();
+                int value = dequeue.pop_front();
                 if (value != number) {
                     mismatch_found = true;
                 }
                 break;
             }
             case (3) : {
-                dequeue->push_back(number);
+                dequeue.push_back(number);
                 break;
             }
             case (4) : {
-                int value = dequeue->pop_back();
+                int value = dequeue.pop_back();
                 if (value != number) {
                     mismatch_found = true;
                 }
