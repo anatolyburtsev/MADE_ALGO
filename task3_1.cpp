@@ -87,7 +87,7 @@ int *do_it(int n, int k) {
     auto updated_sorted_data = new int[k + tail_size];
     MergeTwoSortedArrays(sorted_data, k, new_batch_of_data, tail_size, updated_sorted_data);
     delete[] new_batch_of_data;
-    delete sorted_data;
+    delete[] sorted_data;
 
     return updated_sorted_data;
 }
