@@ -96,5 +96,5 @@ int main() {
         std::cin >> array[i];
     }
     std::cout << find_k_statistic(array, n, k) << std::endl;
-
+    delete[] array;
 }
