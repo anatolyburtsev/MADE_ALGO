@@ -16,18 +16,12 @@ struct Node {
     Node *Left = nullptr;
     Node *Right = nullptr;
 
-    Node(int _value) {
-        value = _value;
-        Left = nullptr;
-        Right = nullptr;
-    }
+    explicit Node(int _value) : value(_value) {}
 };
 
 class Tree {
 public:
     ~Tree();
-
-    void Print() const;
 
     void Add(int value);
 
@@ -37,7 +31,6 @@ private:
     Node *root = nullptr;
 
     void delete_subtree(Node *node);
-
 };
 
 Tree::~Tree() {
