@@ -29,19 +29,20 @@ public:
 
 private:
     Node *root = nullptr;
-
-    void delete_subtree(Node *node);
 };
 
 Tree::~Tree() {
-    delete_subtree(root);
-}
-
-void Tree::delete_subtree(Node *node) {
-    if (!node) return;
-    delete_subtree(node->Left);
-    delete_subtree(node->Right);
-    delete node;
+    std::queue<Node *> queue;
+    queue.push(root);
+    while(!queue.empty()) {
+       Node *nodeToDelete = queue.front();
+       queue.pop();
+       if (nodeToDelete) {
+           queue.push(nodeToDelete->Right);
+           queue.push(nodeToDelete->Left);
+           delete nodeToDelete;
+       }
+    }
 }
 
 void Tree::Add(int value) {
