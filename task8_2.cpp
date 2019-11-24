@@ -1,6 +1,15 @@
 //
 // Created by Анатолий Бурцев on 2019-11-16.
 //
+//Реализуйте структуру данных типа “множество строк” на основе динамической хеш-таблицы с открытой адресацией.
+// Хранимые строки непустые и состоят из строчных латинских букв. Хеш-функция строки должна быть реализована с
+// помощью вычисления значения многочлена методом Горнера. Начальный размер таблицы должен быть равным 8-ми.
+// Перехеширование выполняйте при добавлении элементов в случае, когда коэффициент заполнения таблицы достигает 3/4.
+// Структура данных должна поддерживать операции добавления строки в множество, удаления строки из множества и проверки
+// принадлежности данной строки множеству. 1_1. Для разрешения коллизий используйте квадратичное пробирование.
+// i-ая проба g(k, i)=g(k, i-1) + i (mod m). m - степень двойки. 1_2. Для разрешения коллизий используйте
+// двойное хеширование.
+//
 
 #include <iostream>
 #include <stdexcept>
@@ -21,14 +30,12 @@ public:
 
     bool Remove(const std::string &key);
 
-    int Hash(const std::string *key) const;
-
 private:
+
     // value of "a" for hash function
     int HASH_A = 137;
     double LOAD_FACTOR = 0.75;
     int numberOfElements;
-
     struct HashTableNode {
         int hash;
         std::string key;
@@ -42,6 +49,8 @@ private:
     };
 
     std::vector<HashTableNode *> *table;
+
+    int Hash(const std::string *key) const;
 
     int Hash2(const std::string *key) const;
 
@@ -60,9 +69,7 @@ Hashtable::Hashtable(size_t initial_size) {
 }
 
 Hashtable::~Hashtable() {
-    for (HashTableNode *node : *table) {
-        delete node;
-    }
+    table->clear();
     delete table;
 }
 
