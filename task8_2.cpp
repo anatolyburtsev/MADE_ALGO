@@ -71,13 +71,9 @@ private:
     void grow();
 };
 
-Hashtable::Hashtable(size_t initial_size) {
-    table = std::vector<HashTableNode>(initial_size);
-    numberOfElements = 0;
-}
+Hashtable::Hashtable(size_t initial_size) : table(initial_size), numberOfElements(0) {}
 
 Hashtable::~Hashtable() {
-    table.clear();
 }
 
 int Hashtable::Hash(const std::string &key) const {
