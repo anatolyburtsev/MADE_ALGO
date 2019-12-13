@@ -115,7 +115,7 @@ int main() {
     int n, k;
     int src, dst;
     std::cin >> n >> k;
-    Graph g = Graph(n);
+    Graph g(n);
     for (int i = 0; i < k; ++i) {
         std::cin >> src >> dst;
         g.addEdge(src, dst);
