@@ -26,8 +26,8 @@ public:
     }
 
 private:
-    std::string prefix;
-    std::string suffix;
+    std::string& prefix;
+    std::string& suffix;
 };
 
 class SubstringFinder {
@@ -41,7 +41,7 @@ public:
     std::vector<int> find_substrings();
 
 private:
-    int *calculate_prefix_function(std::string &S);
+    std::vector<int> calculate_prefix_function(std::string &S);
 
     ConcatenatedString concatenatedString;
     std::string pattern;
@@ -49,14 +49,14 @@ private:
     int n;
 };
 
-int *SubstringFinder::calculate_prefix_function(std::string &S) {
-    int *result = new int[S.size()];
-    result[0] = 0;
+std::vector<int> SubstringFinder::calculate_prefix_function(std::string &S) {
+    std::vector<int> result(S.size());
+    result.at(0) = 0;
     for (int i = 1; i < S.size(); ++i) {
         int left_index = i;
-        int right_index = result[i - 1];
+        int right_index = result.at(i - 1);
         while (right_index > 0 && S.at(left_index) != S.at(right_index)) {
-            right_index = result[right_index - 1];
+            right_index = result.at(right_index - 1);
         }
         if (S.at(left_index) == S.at(right_index)) {
             result[i] = right_index + 1;
@@ -68,15 +68,15 @@ int *SubstringFinder::calculate_prefix_function(std::string &S) {
 }
 
 std::vector<int> SubstringFinder::find_substrings() {
-    std::vector<int> result = std::vector<int>();
-    int *pattern_pi = calculate_prefix_function(pattern);
+    std::vector<int> result;
+    std::vector<int> pattern_pi = calculate_prefix_function(pattern);
     // imagine string: pattern$longlongtext
     int prev_pi_value = 0;
     for (int i = p + 1; i < n + p + 1; ++i) {
         int left_index = i;
         int right_index = prev_pi_value;
         while (right_index > 0 && concatenatedString.at(left_index) != concatenatedString.at(right_index)) {
-            right_index = pattern_pi[right_index - 1];
+            right_index = pattern_pi.at(right_index - 1);
         }
         if (concatenatedString.at(left_index) == concatenatedString.at(right_index)) {
             prev_pi_value = right_index + 1;
@@ -98,9 +98,9 @@ int main() {
     std::string text;
     std::cin >> pattern;
     std::cin >> text;
-    auto fndr = new SubstringFinder(text, pattern);
+    SubstringFinder fndr(text, pattern);
 
-    auto result = fndr->find_substrings();
+    auto result = fndr.find_substrings();
     for (int i : result) {
         std::cout << i << " ";
     }
