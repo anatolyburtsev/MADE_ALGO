@@ -1,5 +1,5 @@
 #include <iostream>
-#include <cstringgit merge --no-ff hw2_task4_2>
+//#include <cstringgit merge --no-ff hw2_task4_2>
 // Copyright [2019] <Burtsev Anatolii>
 
 // Домашняя работа #1
