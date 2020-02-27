@@ -11,5 +11,7 @@ add_executable(task6_4 task6_4.cpp)
 add_executable(task8_2 task8_2.cpp)
 add_executable(task7_1 task7_1.cpp)
 add_executable(task11_1 task11_1.cpp)
+add_executable(task18 task18.cpp)
 add_executable(task13 task13.cpp)
 add_executable(task16 task16.cpp)
+
