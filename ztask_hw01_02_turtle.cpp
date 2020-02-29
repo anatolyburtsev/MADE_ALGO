@@ -77,7 +77,7 @@ void find_most_profitable_path(int n, int m, const vector<int8_t> &field) {
             }
         }
     }
-    cout << costs[n*m -1] << endl;
+    cout << costs[n * m - 1] << endl;
 
     int i = n - 1;
     int j = m - 1;
@@ -119,12 +119,10 @@ int main() {
     for (int j = 1; j < m; ++j) {
         for (int i = 1; i < n; ++i) {
             cin >> tmp;
-//            cout << "tmp = " << tmp << endl;
-//            tmpc = tmp;
-//            cout << "tmpc = " << tmpc << endl;
             field[j * n + i] = tmp;
         }
     }
 
     find_most_profitable_path(n, m, field);
+    return 0;
 }

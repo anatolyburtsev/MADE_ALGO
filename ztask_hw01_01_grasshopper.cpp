@@ -16,13 +16,13 @@ void print(vector<int> max_costs) {
     cout << endl;
 }
 
-vector<int> get_backward_path(const vector<int>& prev_positions) {
+vector<int> get_backward_path(const vector<int> &prev_positions) {
     vector<int> path;
-    int cur_pos = prev_positions.size()-1;
-    path.push_back(cur_pos+1);
+    int cur_pos = prev_positions.size() - 1;
+    path.push_back(cur_pos + 1);
     while (cur_pos != 0) {
         cur_pos = prev_positions[cur_pos];
-        path.push_back(cur_pos+1);
+        path.push_back(cur_pos + 1);
     }
     reverse(path.begin(), path.end());
     return path;
@@ -52,15 +52,15 @@ string calc(int n, int k, const vector<int> &costs) {
     }
 
     string output;
-    output += std::to_string(max_costs[n-1]);
+    output += std::to_string(max_costs[n - 1]);
     output += "\n";
-    output += std::to_string(jump_counts[n-1]);
+    output += std::to_string(jump_counts[n - 1]);
     output += "\n";
 
     vector<int> path = get_backward_path(prev_positions);
-    for (std::vector<int>::iterator it=path.begin(); it!=path.end(); ++it) {
+    for (std::vector<int>::iterator it = path.begin(); it != path.end(); ++it) {
         output += std::to_string(*it);
-        if (it+1 != path.end()){
+        if (it + 1 != path.end()) {
             output += " ";
         }
     }
@@ -71,7 +71,6 @@ string calc(int n, int k, const vector<int> &costs) {
 
 int main() {
     ifstream inFile;
-//    inFile.open("/Users/anatoliiburtsev/CLionProjects/MADE_ALGO/input.txt_hw0101");
     inFile.open("input.txt");
     if (!inFile) {
         cerr << "Unable to open input file";
@@ -99,6 +98,6 @@ int main() {
     }
     outFile << response;
     outFile.close();
-
+    return 0;
 }
 
