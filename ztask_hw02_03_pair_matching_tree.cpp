@@ -20,9 +20,6 @@ public:
         this->nodes = new vector<vector<int>>(n);
         this->answer_node_included = new vector<int>(n);
         this->answer_node_not_included = new vector<int>(n);
-//        for (int i = 0; i < n; ++i) {
-//            nodes[i] = vector<int>();
-//        }
     }
 
     ~Graph() {
@@ -61,12 +58,6 @@ vector<int> Graph::getChilds(int u) {
 
 int Graph::findMaxPairs() {
     return findMaxPairsTree(root);
-//    int maxPairs = 0;
-//    for (int i = 0; i < n; ++i) {
-//        if (visited->at(i) > 0) continue;
-//        maxPairs += findMaxPairsTree(i);
-//    }
-//    return maxPairs;
 }
 
 int Graph::findMaxPairsTree(int root) {
@@ -124,9 +115,9 @@ void input() {
     cin >> n;
     Graph g(n);
     int node;
-    for (int i = 0; i < n ; ++i) {
+    for (int i = 0; i < n; ++i) {
         cin >> node;
-        g.addNode(i, node-1);
+        g.addNode(i, node - 1);
     }
 
     cout << n - g.findMaxPairs();

@@ -84,14 +84,14 @@ int Graph::getRoute() {
 
     cout << min_route << endl;
 
-    cout << start +1 << " ";
-    int mask = (1<< n) - 1 - (1<<start);
+    cout << start + 1 << " ";
+    int mask = (1 << n) - 1 - (1 << start);
     int cur_pos = start;
     while (mask > 0) {
         int next_parent = p->at(cur_pos).at(mask);
         cur_pos = next_parent;
-        cout << next_parent+1 << " ";
-        mask -= 1<< next_parent;
+        cout << next_parent + 1 << " ";
+        mask -= 1 << next_parent;
     }
     return min_route;
 }
@@ -113,9 +113,7 @@ void input() {
 }
 
 int test_set(int n, int *nodes) {
-//    int n = 4;
     Graph g(n);
-//    int *nodes = new int[n * n]{0, 1, 10, 1, 1, 0, 10, 1, 1, 10, 0, 1, 10, 1, 1, 0};
     for (int i = 0; i < n * n; ++i) {
         g.addNode(i, nodes[i]);
     }
@@ -124,7 +122,9 @@ int test_set(int n, int *nodes) {
 
 void test() {
 //    cout << test_set(5, new int[5*5]{0,8,1,6,7,8,0,2,5,4,1,2,0,9,10,6,5,9,0,3,7,4,10,3,0}) ;
-    assert(test_set(5, new int[5*5]{0, 183, 163, 173, 181, 183, 0, 165, 172, 171, 163, 165, 0, 189, 302, 173, 172, 189, 0, 167, 181, 171, 302, 167, 0}) == 666);
+    assert(test_set(5,
+                    new int[5 * 5]{0, 183, 163, 173, 181, 183, 0, 165, 172, 171, 163, 165, 0, 189, 302, 173, 172, 189,
+                                   0, 167, 181, 171, 302, 167, 0}) == 666);
 //    assert(test_set(3, new int[9]{0, 10, 4, 10, 0, 2, 4, 2, 0}) == 6);
 //    assert(test_set(4, new int[16]{0, 1, 1, 1, 1, 0, 10, 1, 1, 10, 0, 1, 10, 1, 1, 0}) == 3);
 //    assert(test_set(4, new int[16]{0,1,10,1,1,0,10,10,10,10,0,1,1,10,10,3}) == 3);

@@ -16,7 +16,7 @@ public:
     Graph(int n) {
         this->n = n;
         this->nodes = new vector<int>(n * n);
-        this->dp = new vector<int>(1<<n);
+        this->dp = new vector<int>(1 << n);
     }
 
     ~Graph() {
@@ -38,6 +38,7 @@ public:
     static int getBit(int mask, int i) {
         return (mask >> i) & 1;
     }
+
 private:
     int n;
     vector<int> *nodes;
@@ -46,7 +47,7 @@ private:
 };
 
 bool Graph::isEdgeExist(int i, int j) {
-    if (i == j ) return false;
+    if (i == j) return false;
     return nodes->at(i * n + j) > 0;
 }
 
@@ -55,10 +56,10 @@ int Graph::findMaxPairs() {
     for (int mask = 0; mask < (1 << n); ++mask) {
         for (int i = 0; i < n; ++i) {
             if (getBit(mask, i) == 1) {
-                dp->at(mask) = max(dp->at(mask), dp->at(mask - (1<<i)));
+                dp->at(mask) = max(dp->at(mask), dp->at(mask - (1 << i)));
                 for (int j = 0; j < n; ++j) {
                     if (getBit(mask, j) && isEdgeExist(i, j)) {
-                        dp->at(mask) = max(dp->at(mask), dp->at(mask - (1<<i) - (1<<j))+1);
+                        dp->at(mask) = max(dp->at(mask), dp->at(mask - (1 << i) - (1 << j)) + 1);
                     }
                 }
             }
