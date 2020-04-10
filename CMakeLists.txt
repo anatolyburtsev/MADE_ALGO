@@ -27,4 +27,9 @@ add_executable(dynprog32_c algo2/hw_03_04_number_theory/ztask_hw03_02_several_fu
 add_executable(dynprog33 algo2/hw_03_04_number_theory/ztask_hw03_03_crack_RSA.cpp)
 add_executable(dynprog34 algo2/hw_03_04_number_theory/ztask_hw03_04_point_on_plane.cpp)
 add_executable(dynprog35 algo2/hw_03_04_number_theory/ztask_hw03_05_chinese_reminder_theorem.cpp)
+add_executable(dynprog51 algo2/hw_05_06_intervals/hw05_01_rsq_simple.cpp)
+add_executable(dynprog511 algo2/hw_05_06_intervals/hw05_01_rsq_simple_simple.cpp)
+add_executable(dynprog52 algo2/hw_05_06_intervals/hw05_02_fenwick_tree.cpp)
+add_executable(dynprog53 algo2/hw_05_06_intervals/hw05_03_segment_tree.cpp)
+add_executable(dynprog54 algo2/hw_05_06_intervals/hw05_04_sparse_matrix_simple_vector.cpp)
 
