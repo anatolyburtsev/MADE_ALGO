@@ -32,4 +32,7 @@ add_executable(dynprog511 algo2/hw_05_06_intervals/hw05_01_rsq_simple_simple.cpp
 add_executable(dynprog52 algo2/hw_05_06_intervals/hw05_02_fenwick_tree.cpp)
 add_executable(dynprog53 algo2/hw_05_06_intervals/hw05_03_segment_tree.cpp)
 add_executable(dynprog54 algo2/hw_05_06_intervals/hw05_04_sparse_matrix_simple_vector.cpp)
+add_executable(dp61 algo2/hw_05_06_intervals/hw06_01_multidim_fenwick.cpp)
+add_executable(dp63 algo2/hw_05_06_intervals/hw06_03_LCA.cpp)
+add_executable(dp65 algo2/hw_05_06_intervals/hw06_05_LCA_min.cpp minonpath.in)
 
