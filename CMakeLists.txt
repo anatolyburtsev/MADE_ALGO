@@ -35,4 +35,7 @@ add_executable(dynprog54 algo2/hw_05_06_intervals/hw05_04_sparse_matrix_simple_v
 add_executable(dp61 algo2/hw_05_06_intervals/hw06_01_multidim_fenwick.cpp)
 add_executable(dp63 algo2/hw_05_06_intervals/hw06_03_LCA.cpp)
 add_executable(dp65 algo2/hw_05_06_intervals/hw06_05_LCA_min.cpp minonpath.in)
+add_executable(dp81 algo2/hw_08_09_flow/hw08_01_max_flow.cpp)
+add_executable(dp82 algo2/hw_08_09_flow/hw08_02_min_cut.cpp)
+add_executable(dp83 algo2/hw_08_09_flow/hw08_03_two_paths.cpp)
 
