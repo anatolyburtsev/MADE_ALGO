@@ -38,4 +38,7 @@ add_executable(dp65 algo2/hw_05_06_intervals/hw06_05_LCA_min.cpp minonpath.in)
 add_executable(dp81 algo2/hw_08_09_flow/hw08_01_max_flow.cpp)
 add_executable(dp82 algo2/hw_08_09_flow/hw08_02_min_cut.cpp)
 add_executable(dp83 algo2/hw_08_09_flow/hw08_03_two_paths.cpp)
+add_executable(dp91 algo2/hw_08_09_flow/hw09_01_min_cost.cpp)
+add_executable(dp92 algo2/hw_08_09_flow/hw09_02_assignment_problem.cpp)
+add_executable(dp922 algo2/hw_08_09_flow/hw09_02_assignment_problem_dijkstra.cpp)
 
