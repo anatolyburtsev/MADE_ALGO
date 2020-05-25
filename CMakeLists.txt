@@ -41,4 +41,5 @@ add_executable(dp83 algo2/hw_08_09_flow/hw08_03_two_paths.cpp)
 add_executable(dp91 algo2/hw_08_09_flow/hw09_01_min_cost.cpp)
 add_executable(dp92 algo2/hw_08_09_flow/hw09_02_assignment_problem.cpp)
 add_executable(dp922 algo2/hw_08_09_flow/hw09_02_assignment_problem_dijkstra.cpp)
+add_executable(dp111 algo2/hw_11_string/hw11_01_suffix_array.cpp)
 
